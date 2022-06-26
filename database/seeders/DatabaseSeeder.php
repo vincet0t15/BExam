@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\role;
@@ -16,21 +17,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       $role = [
+        $category = [
             [
-                'display_name' => 'Administator',
-                'description' => 'Super User',
+                'category' => 'Cellphone',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
             [
-                'display_name' => 'User',
+                'category' => 'Laptop',
                 'description' => 'Can add Expenses',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]
         ];
 
-        role::insert($role);
+        Category::insert($category);
     }
 }
