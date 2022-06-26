@@ -4,11 +4,17 @@ import Dashboard from './components/partials/_dashboard.vue'
 import indexMain from './components/partials/IndexMain.vue'
 import Login from './components/Auth/login.vue'
 import Register from './components/Auth/register.vue'
-import Roles from '../js/components/Roles/index.vue'
-import Users from './components/Users/index.vue'
-import ExpenseCategory from './components/ExpsenseCategory/index.vue'
-import Expenses from './components/Expenses/index.vue'
 
+import CategoryList from './components/Category/index.vue'
+import createCategory from './components/Category/create.vue'
+import updateCategory from './components/Category/update.vue'
+
+import productList from './components/Products/index.vue'
+import createProduct from './components/Products/create.vue'
+import updateProduct from './components/Products/update.vue'
+
+import multistep from './components/Products/multistep.vue'
+import mulitsteps from './components/Products/mulitstep.vue'
 function isLoggedIn() {
     return localStorage.getItem("token");
 }
@@ -33,28 +39,52 @@ const routes = [
                 component:Dashboard
             },
             {
-                name: 'Roles',
-                path: '/roles',
+                name: 'CategoryList',
+                path: '/categories',
                 meta: { requiresAuth: true },
-                component: Roles
+                component: CategoryList
             },
             {
-                name: 'Users',
-                path: '/users',
+                name: 'createCategory',
+                path: '/create-category',
                 meta: { requiresAuth: true },
-                component: Users
+                component: createCategory
             },
             {
-                name: 'ExpenseCategory',
-                path: '/expense-category',
+                name: 'updateCategory',
+                path: '/update-category/:id',
                 meta: { requiresAuth: true },
-                component: ExpenseCategory
+                component: updateCategory
             },
             {
-                name: 'Expenses',
-                path: '/expense',
+                name: 'productList',
+                path: '/products',
                 meta: { requiresAuth: true },
-                component: Expenses
+                component: productList
+            },
+            {
+                name: 'createProduct',
+                path: '/create-products',
+                meta: { requiresAuth: true },
+                component: createProduct
+            },
+            {
+                name: 'updateProduct',
+                path: '/update-products/:id',
+                meta: { requiresAuth: true },
+                component: updateProduct
+            },
+            {
+                name: 'multi',
+                path: '/multi',
+                meta: { requiresAuth: true },
+                component: multistep
+            },
+            {
+                name: 'mult',
+                path: '/mult',
+                meta: { requiresAuth: true },
+                component: mulitsteps
             },
         ]
     },
@@ -71,8 +101,6 @@ const routes = [
         meta: { guest: true },
         component: Register
     },
-
-
 ];
 
 

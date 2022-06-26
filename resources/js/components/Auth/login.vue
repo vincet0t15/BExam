@@ -70,8 +70,9 @@ export default {
           axios
             .post("api/login", form)
             .then((response) => {
+              console.log(response.data);
               localStorage.setItem("token", response.data);
-              router.go({ name: "Dashboard" });
+               router.go({ name: "Dashboard" });
             })
             .catch((err) => {
               errors.value = err.response.data.errors;

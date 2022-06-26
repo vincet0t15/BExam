@@ -1,76 +1,52 @@
 <template>
-<div>
-    <div class="right_col" role="main">
-        <div class="">
-            <canvas id="myChart" width="400" height="400"></canvas>
+<div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Plain Page</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Plain Page</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Settings 1</a>
+                            <a class="dropdown-item" href="#">Settings 2</a>
+                          </div>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                      Add content to the page ...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
 </template>
 
-<script>
-import Chart from 'chart.js/auto';
-import axios from "axios";
-export default {
-    data() {
-        return {
-            expenses: {},
-            test: []
-        }
-    },
-
-    methods: {
-        getExpenses() {
-            axios
-                .get('api/expenses')
-                .then(response => (
-                    this.expenses = response,
-                    response.data.forEach(element => {
-                        this.test.push(element.amount)
-                    }),
-                    console.log(this.test)
-                ))
-                .catch(err => console.log(err))
-        },
-    },
-    mounted() {
-
-        let test = new Array();
-
-        axios
-            .get('api/expenses')
-            .then(response => {
-                let data = response.data;
-                if (data) {
-                    data.forEach(element => {
-                        test.push(element.amount);
-                    });
-                    
-                }
-                console.log(test);
-            });
-
-        const ctx = document.getElementById('myChart');
-
-        const data = {
-            datasets: [{
-                label: 'My First Dataset',
-                data: test,
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-            }]
-        };
-
-        const myChart = new Chart(ctx, {
-            type: 'pie',
-            data: data,
-
-        });
-        myChart;
-    }
-}
-</script>

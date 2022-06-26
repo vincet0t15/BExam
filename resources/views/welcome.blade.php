@@ -17,12 +17,12 @@
   <!-- NProgress -->
   <link href="{{asset('vendors/nprogress/nprogress.css')}}" rel="stylesheet">
   <!-- bootstrap-wysiwyg -->
-  <link href="{{'vendors/google-code-prettify/bin/prettify.min.css'}}" rel="stylesheet">
+  <link href="{{asset('vendors/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <!-- Custom styling plus plugins -->
-  <link href="{{'css/custom.min.css'}}" rel="stylesheet">
+  <link href="{{asset('css/custom.min.css')}}" rel="stylesheet">
 </head>
 
 <body class="nav-md">

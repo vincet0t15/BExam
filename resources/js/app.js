@@ -3,7 +3,7 @@ require('./bootstrap');
 import { createApp } from 'vue';
 import App from './App.vue'
 import router from './router'
-import store from './store/store'
+
 
 //---->sweet alert
 import Swal from 'sweetalert2'
@@ -19,8 +19,6 @@ const Toast = Swal.mixin({
 window.Toast = Toast //--> use global sweet alert
 //---->end sweet aler
 
-
 createApp(App)
     .use(router)
-    .use(store)
     .mount('#app');

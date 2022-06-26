@@ -30,36 +30,8 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully Register']);
     }
 
-    public function update_user(Request $request, $id)
-    {
-        $request->validate([
-            'name' => ['required'],
-            'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'confirmed'],
-            'password_confirmation' => ['required'],
-        ]);
 
-        User::where('id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $request->role
-        ]);
-    }
 
-    public function remove_user($id)
-    {
-        if (Auth()->user()->id == $id) {
-            return response()->json([
-                'message' => "Access denied!"
-            ]);
-        } else {
-            User::where('id', $id)->delete();
-            return response()->json([
-                'message' => "Successfully remove!"
-            ]);
-        }
-    }
 
     public function login(Request $request)
     {
@@ -77,12 +49,9 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-        $token = $user->createToken($request->device_name)->plainTextToken;
 
-        return ([
-            'token' => $token,
-            'role' => 'Admin'
-        ]);
+
+        return $user->createToken($request->device_name)->plainTextToken;
     }
 
     public function logout(Request $request)

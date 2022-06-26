@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ImageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,4 +37,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('expenses-category', App\Http\Controllers\ExpensesCategoryController::class);
     Route::resource('expenses', App\Http\Controllers\MyExpensesController::class);
+
+    Route::resource('category', App\Http\Controllers\CategoryController::class);
+    Route::resource('product', App\Http\Controllers\ProductController::class);
+
+
+    Route::resource('image', App\Http\Controllers\ImageController::class);
 });
